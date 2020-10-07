@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -13,14 +14,14 @@ import static org.hamcrest.CoreMatchers.is;
 
 import java.util.List;
 
-@SpringBootTest
 @RunWith(SpringRunner.class)
+@DataJpaTest
 public class UserRepositoryTest {
     @Autowired
     UserRepository userRepository;
 
     @AfterEach
-    public void cleanup() {
+    public void tearDown() {
         userRepository.deleteAll();
     }
 
