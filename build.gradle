@@ -18,6 +18,9 @@ repositories {
 	mavenCentral()
 }
 
+def queryDSLVersion = '4.2.2'
+def generated = "src/main/gnerated"
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -27,11 +30,32 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2:1.4.197'
 	runtimeOnly 'mysql:mysql-connector-java'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	implementation 'junit:junit:4.12'
+
+	compile("com.querydsl:querydsl-core:${queryDSLVersion}")
+	compile("com.querydsl:querydsl-jpa:${queryDSLVersion}")
+	compile("com.querydsl:querydsl-apt:${queryDSLVersion}")
+	annotationProcessor(
+			"com.querydsl:querydsl-apt:${queryDSLVersion}:jpa",
+			"org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final",
+			"javax.annotation:javax.annotation-api",
+			'org.projectlombok:lombok'
+	)
+}
+
+sourceSets {
+	main.java.srcDirs += [generated]
+}
+
+tasks.withType(JavaCompile) {
+	options.annotationProcessorGeneratedSourcesDirectory = file(generated)
+}
+
+clean.doLast {
+	file(generated).deleteDir()
 }
 
 test {
