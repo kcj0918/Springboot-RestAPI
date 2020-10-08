@@ -18,11 +18,6 @@ public class DefaultResponse {
         this.data = null;
     }
 
-    public DefaultResponse(Status status, String msg) {
-        this.status = status;
-        this.data = null;
-    }
-
     public DefaultResponse(Object data) {
         this.status = Status.SUCCESS;
         this.data = data;
