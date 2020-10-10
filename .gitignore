@@ -4,8 +4,10 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-!**/src/main/generated/**/domain/.java
+src/main/generated/
 application.properties
+application-dev.properties
+application-real.properties
 local.properties
 
 ### STS ###
