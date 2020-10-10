@@ -6,22 +6,20 @@ import com.dev.springrestapi.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-@RunWith(SpringRunner.class)
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
     @InjectMocks
-    UserService userService;
+    private UserService userService;
 
     @Mock
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @AfterEach
     public void tearDown() {
@@ -31,10 +29,14 @@ public class UserServiceTest {
     @Test
     public void addUserTest() {
         //given
-        UserAddRequestDto userAddRequestDto = new UserAddRequestDto();
-        userAddRequestDto.setEmail("add test email");
-        userAddRequestDto.setName("add test name");
-        User addUser = userAddRequestDto.toEntity();
+        UserAddRequestDto userAddRequestDto = UserAddRequestDto.builder()
+                .email("add test email")
+                .name("add test name")
+                .build();
+        User addUser = User.builder()
+                .email(userAddRequestDto.getEmail())
+                .name(userAddRequestDto.getName())
+                .build();
         userRepository.save(addUser);
 
         //when

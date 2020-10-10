@@ -3,20 +3,18 @@ package com.dev.springrestapi.repository;
 import com.dev.springrestapi.domain.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-@RunWith(SpringRunner.class)
+
 @DataJpaTest
 public class UserRepositoryTest {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @AfterEach
     public void tearDown() {
@@ -24,7 +22,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    public void addUserTest() {
+    public void addUserTest() throws Exception {
         //given
         User user = User.builder()
                 .email("add test email")
