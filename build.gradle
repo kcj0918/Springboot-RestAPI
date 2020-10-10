@@ -30,10 +30,10 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2:1.4.197'
 	runtimeOnly 'mysql:mysql-connector-java'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
-	implementation 'junit:junit:4.12'
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	testImplementation('org.junit.jupiter:junit-jupiter-api')
+	testCompile('org.junit.jupiter:junit-jupiter-params')
+	testRuntime('org.junit.jupiter:junit-jupiter-engine')
 
 	compile("com.querydsl:querydsl-core:${queryDSLVersion}")
 	compile("com.querydsl:querydsl-jpa:${queryDSLVersion}")
