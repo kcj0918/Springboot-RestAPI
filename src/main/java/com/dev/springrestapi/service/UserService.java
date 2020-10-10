@@ -21,12 +21,11 @@ public class UserService implements UserServiceInterface, UserQueryDSLInterface 
         if (isEmailExist(userAddRequestDto.getEmail())) {
             throw new UserConflictException(Strings.ALREADY_EXIST_EMAIL);
         }
-
-        User user = User.builder()
+        User addUser = User.builder()
                 .email(userAddRequestDto.getEmail())
                 .name(userAddRequestDto.getName())
                 .build();
-        userRepository.save(user);
+        userRepository.save(addUser);
     }
 
     @Override
