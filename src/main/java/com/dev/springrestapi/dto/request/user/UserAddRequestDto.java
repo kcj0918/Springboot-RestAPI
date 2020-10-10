@@ -5,16 +5,14 @@ import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@Builder
 public class UserAddRequestDto {
     private String email;
     private String name;
 
     @Builder
-    public User toEntity() {
-        return User.builder()
-                .email(email)
-                .name(name)
-                .build();
+    public UserAddRequestDto(String email, String name) {
+        this.email = email;
+        this.name = name;
     }
 }

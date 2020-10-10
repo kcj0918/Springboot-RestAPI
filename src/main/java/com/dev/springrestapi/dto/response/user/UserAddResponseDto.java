@@ -1,22 +1,16 @@
 package com.dev.springrestapi.dto.response.user;
 
-import com.dev.springrestapi.domain.User;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
 
 @Getter
-@Setter
-@NoArgsConstructor
+@Builder
 public class UserAddResponseDto {
-    private Long idx;
     private String email;
     private String name;
 
-    @Builder
-    public User toEntity() {
-        return User.builder()
-                .idx(idx)
-                .email(email)
-                .name(name)
-                .build();
+    public UserAddResponseDto(String email, String name) {
+        this.email = email;
+        this.name = name;
     }
 }
