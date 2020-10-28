@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -16,7 +17,7 @@ public class AirData {
     @GeneratedValue
     private Long idx;
 
-    private String dataTime;
+    private LocalDateTime dataTime;
 
     private Double so2Value;
 
@@ -52,7 +53,7 @@ public class AirData {
 
     @Builder
     public AirData(Long idx,
-                   String dataTime,
+                   LocalDateTime dataTime,
                    Double so2Value,
                    Double o3Value,
                    Double no2Value,
