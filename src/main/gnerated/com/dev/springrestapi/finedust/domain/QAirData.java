@@ -21,9 +21,9 @@ public class QAirData extends EntityPathBase<AirData> {
 
     public final NumberPath<Double> coGrade = createNumber("coGrade", Double.class);
 
-    public final StringPath dataTime = createString("dataTime");
+    public final NumberPath<Double> coValue = createNumber("coValue", Double.class);
 
-    public final NumberPath<Long> idx = createNumber("idx", Long.class);
+    public final DateTimePath<java.time.LocalDateTime> dataTime = createDateTime("dataTime", java.time.LocalDateTime.class);
 
     public final NumberPath<Double> khaiGrade = createNumber("khaiGrade", Double.class);
 
@@ -48,6 +48,12 @@ public class QAirData extends EntityPathBase<AirData> {
     public final NumberPath<Double> pm25Grade = createNumber("pm25Grade", Double.class);
 
     public final NumberPath<Double> pm25Grade1h = createNumber("pm25Grade1h", Double.class);
+
+    public final NumberPath<Double> pm25Value = createNumber("pm25Value", Double.class);
+
+    public final NumberPath<Double> pm25Value24 = createNumber("pm25Value24", Double.class);
+
+    public final NumberPath<Long> seq = createNumber("seq", Long.class);
 
     public final NumberPath<Double> so2Grade = createNumber("so2Grade", Double.class);
 
