@@ -20,8 +20,6 @@ public class AirDataRepositoryImpl extends QuerydslRepositorySupport implements 
     @Override
     public List<AirData> getAirDataByStationName(String beginDate, String endDate, String stationName) {
         StringToLocalDateTime stringToLocalDateTime = new StringToLocalDateTime(beginDate, endDate);
-        System.out.println("sssssssssssss: " + stringToLocalDateTime.getBeginDate());
-        System.out.println("eeeeeeeeeeeee: " + stringToLocalDateTime.getEndDate());
         return from(qAirData)
                 .where(qAirData.stationName
                         .eq(stationName)
