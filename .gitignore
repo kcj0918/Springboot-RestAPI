@@ -8,6 +8,7 @@ src/main/generated/
 application.properties
 application-dev.properties
 application-real.properties
+application-test.properties
 local.properties
 
 ### STS ###
