@@ -1,5 +1,6 @@
 package com.dev.springrestapi.finedust.util.customvalid.airdata.valitator;
 
+import com.dev.springrestapi.finedust.dto.request.airdata.AirDataRequestDto;
 import com.dev.springrestapi.finedust.util.customvalid.airdata.valid.DateValid;
 
 import javax.validation.ConstraintValidator;

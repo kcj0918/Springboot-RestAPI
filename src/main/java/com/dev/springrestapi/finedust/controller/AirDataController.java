@@ -1,21 +1,22 @@
 package com.dev.springrestapi.finedust.controller;
 
 import com.dev.springrestapi.finedust.domain.AirData;
+import com.dev.springrestapi.finedust.dto.request.airdata.AirDataRequestDto;
+import com.dev.springrestapi.finedust.exception.airdata.MisMatchDateTimeFormatException;
 import com.dev.springrestapi.finedust.service.AirDataService;
 import com.dev.springrestapi.util.res.DefaultResponse;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("")
 @AllArgsConstructor
 @Api
@@ -29,13 +30,18 @@ public class AirDataController {
         return new ResponseEntity<>(new DefaultResponse(airDatas), HttpStatus.OK);
     }
 
-    @GetMapping("airs/{beginDate}/{endDate}/{stationName}")
+    @GetMapping("airs/stationName")
     @ResponseBody
     public ResponseEntity<DefaultResponse> getAirDataBeginEndStationName(
-            @PathVariable("beginDate") String beginDate,
-            @PathVariable("endDate") String endDate,
-            @PathVariable("stationName") String stationName) {
-        List<AirData> airDatas = airDataService.getAirDataByStationName(beginDate, endDate, stationName);
+            @ModelAttribute @Valid AirDataRequestDto airDataRequestDto, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            throw new MisMatchDateTimeFormatException();
+        }
+        List<AirData> airDatas = airDataService.getAirDataByStationName(
+                airDataRequestDto.getBeginDate(),
+                airDataRequestDto.getEndDate(),
+                airDataRequestDto.getStationName());
+
         return new ResponseEntity<>(new DefaultResponse(airDatas), HttpStatus.OK);
     }
 }
