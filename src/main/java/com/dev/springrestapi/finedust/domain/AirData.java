@@ -1,5 +1,6 @@
 package com.dev.springrestapi.finedust.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class AirData {
     @Column(name = ("seq"))
     private Long seq;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
     @Column(name = ("dataTime"))
     private LocalDateTime dataTime;
 
@@ -76,6 +77,10 @@ public class AirData {
     @Column(name = ("pm25Grade1h"))
     private Double pm25Grade1h;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Seoul")
+    @Column(name = ("regdate"))
+    private LocalDateTime regdate;
+
     @Column(name = ("stationName"))
     private String stationName;
 
@@ -100,6 +105,7 @@ public class AirData {
                    Double pm25Grade,
                    Double pm10Grade1h,
                    Double pm25Grade1h,
+                   LocalDateTime regdate,
                    String stationName) {
         this.seq = seq;
         this.dataTime = dataTime;
@@ -121,6 +127,35 @@ public class AirData {
         this.pm25Grade = pm25Grade;
         this.pm10Grade1h = pm10Grade1h;
         this.pm25Grade1h = pm25Grade1h;
+        this.regdate = regdate;
         this.stationName = stationName;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "seq=" + seq +
+                ", dataTime=" + dataTime +
+                ", so2Value=" + so2Value +
+                ", coValue=" + coValue +
+                ", o3Value=" + o3Value +
+                ", no2Value=" + no2Value +
+                ", pm10Value=" + pm10Value +
+                ", pm10value24=" + pm10value24 +
+                ", pm25Value=" + pm25Value +
+                ", pm25Value24=" + pm25Value24 +
+                ", khaiValue=" + khaiValue +
+                ", khaiGrade=" + khaiGrade +
+                ", so2Grade=" + so2Grade +
+                ", coGrade=" + coGrade +
+                ", o3Grade=" + o3Grade +
+                ", no2Grade=" + no2Grade +
+                ", pm10Grade=" + pm10Grade +
+                ", pm25Grade=" + pm25Grade +
+                ", pm10Grade1h=" + pm10Grade1h +
+                ", pm25Grade1h=" + pm25Grade1h +
+                ", regdate=" + regdate +
+                ", stationName='" + stationName + '\'' +
+                '}';
     }
 }
