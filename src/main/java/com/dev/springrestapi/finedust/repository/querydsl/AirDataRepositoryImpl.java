@@ -21,8 +21,7 @@ public class AirDataRepositoryImpl extends QuerydslRepositorySupport implements 
     public List<AirData> getAirDataByStationName(String beginDate, String endDate, String stationName) {
         StringToLocalDateTime stringToLocalDateTime = new StringToLocalDateTime(beginDate, endDate);
         return from(qAirData)
-                .where(qAirData.stationName
-                        .eq(stationName)
+                .where(qAirData.stationName.eq(stationName)
                         .and(qAirData.dataTime.between(
                                 stringToLocalDateTime.getBeginDate(),
                                 stringToLocalDateTime.getEndDate())))

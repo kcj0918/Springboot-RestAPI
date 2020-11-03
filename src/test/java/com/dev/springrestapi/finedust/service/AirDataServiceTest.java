@@ -3,6 +3,7 @@ package com.dev.springrestapi.finedust.service;
 import com.dev.springrestapi.finedust.domain.AirData;
 import com.dev.springrestapi.finedust.repository.AirDataRepository;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,7 +28,8 @@ public class AirDataServiceTest {
     }
 
     @Test
-    public void 시작날짜_끝나는날짜_지역명_조회() {
+    @DisplayName("시작날짜_끝나는날짜_지역명_조회")
+    public void getAirDataByStationNameTest() {
         LocalDateTime localDateTime;
         for (int i = 13; i < 17; i++) {
             localDateTime = LocalDateTime.of(2020, 10, 29, i, 0, 0);
