@@ -1,4 +1,4 @@
-package com.dev.springrestapi.finedust.exception.airdata;
+package com.dev.springrestapi.finedust.util.exception.airdata;
 
 public class AirDataNotFoundException extends RuntimeException{
 }
