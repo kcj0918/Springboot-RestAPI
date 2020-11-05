@@ -1,16 +1,20 @@
 package com.dev.springrestapi.finedust.dto.request.airdata;
 
-import com.dev.springrestapi.finedust.util.customvalid.airdata.valid.DateValid;
+import com.dev.springrestapi.finedust.util.Strings;
+import com.dev.springrestapi.finedust.util.customvalid.airdata.valid.DateFormatValid;
 import lombok.Builder;
 import lombok.Getter;
+
+import javax.validation.constraints.NotBlank;
 
 @Builder
 @Getter
 public class AirDataRequestDto {
-    @DateValid
+    @DateFormatValid
     String beginDate;
-    @DateValid
+    @DateFormatValid
     String endDate;
+    @NotBlank(message = Strings.CAN_NOT_REQUEST_BLANK)
     String stationName;
 
     public AirDataRequestDto(String beginDate, String endDate, String stationName) {

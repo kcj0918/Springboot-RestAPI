@@ -2,7 +2,7 @@ package com.dev.springrestapi.finedust.controller;
 
 import com.dev.springrestapi.finedust.domain.AirData;
 import com.dev.springrestapi.finedust.dto.request.airdata.AirDataRequestDto;
-import com.dev.springrestapi.finedust.exception.airdata.MisMatchDateTimeFormatException;
+import com.dev.springrestapi.finedust.util.exception.airdata.AirDataRequestWrongFormatException;
 import com.dev.springrestapi.finedust.service.AirDataService;
 import com.dev.springrestapi.util.res.DefaultResponse;
 import io.swagger.annotations.Api;
@@ -13,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @RestController
@@ -35,7 +34,7 @@ public class AirDataController {
     public ResponseEntity<DefaultResponse> getAirDataBeginEndStationName(
             @ModelAttribute @Valid AirDataRequestDto airDataRequestDto, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
-            throw new MisMatchDateTimeFormatException();
+            throw new AirDataRequestWrongFormatException();
         }
         List<AirData> airDatas = airDataService.getAirDataByStationName(
                 airDataRequestDto.getBeginDate(),

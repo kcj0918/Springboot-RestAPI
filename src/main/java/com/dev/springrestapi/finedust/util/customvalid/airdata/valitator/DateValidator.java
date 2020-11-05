@@ -1,7 +1,6 @@
 package com.dev.springrestapi.finedust.util.customvalid.airdata.valitator;
 
-import com.dev.springrestapi.finedust.dto.request.airdata.AirDataRequestDto;
-import com.dev.springrestapi.finedust.util.customvalid.airdata.valid.DateValid;
+import com.dev.springrestapi.finedust.util.customvalid.airdata.valid.DateFormatValid;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -9,10 +8,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class DateValidator implements ConstraintValidator<DateValid, String> {
+public class DateValidator implements ConstraintValidator<DateFormatValid, String> {
 
     @Override
-    public void initialize(DateValid constraintAnnotation) {
+    public void initialize(DateFormatValid constraintAnnotation) {
 
     }
 
