@@ -13,7 +13,7 @@ public class FineDustExceptionHandler {
     @ExceptionHandler({AirDataRequestWrongFormatException.class})
     public ResponseEntity<DefaultResponse> dateValidException() {
         return new ResponseEntity<>(new DefaultResponse(
-                DefaultResponse.Status.FAIL, Strings.WRONG_FORMAT_AIRDATA),
+                DefaultResponse.Status.FAIL, Strings.WRONG_FORMAT_AIR_DATA_REQUEST_DTO),
                 HttpStatus.BAD_REQUEST);
     }
 }

@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = DateValidator.class)
 public @interface DateFormatValid {
-    String message() default Strings.WRONG_FORMAT_AIRDATA;
+    String message() default Strings.WRONG_FORMAT_AIR_DATA_REQUEST_DTO;
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
