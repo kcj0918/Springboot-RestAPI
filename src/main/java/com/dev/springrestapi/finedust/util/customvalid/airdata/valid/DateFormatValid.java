@@ -10,11 +10,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target({ElementType.METHOD, ElementType.FIELD})
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = DateValidator.class)
-public @interface DateValid {
-    String msg() default Strings.WRONG_LOCAL_DATE_TIME;
+public @interface DateFormatValid {
+    String message() default Strings.WRONG_FORMAT_AIR_DATA_REQUEST_DTO;
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
