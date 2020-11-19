@@ -41,6 +41,9 @@ dependencies {
 	testCompile('org.junit.jupiter:junit-jupiter-params')
 	testRuntime('org.junit.jupiter:junit-jupiter-engine')
 
+	compile("com.github.ulisesbocchio:jasypt-spring-boot-starter:1.17")
+	compile(group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.66')
+
 	compile("com.querydsl:querydsl-core:${queryDSLVersion}")
 	compile("com.querydsl:querydsl-jpa:${queryDSLVersion}")
 	compile("com.querydsl:querydsl-apt:${queryDSLVersion}")
