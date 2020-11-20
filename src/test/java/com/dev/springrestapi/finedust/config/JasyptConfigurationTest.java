@@ -1,18 +1,18 @@
-package com.dev.springrestapi.finedust.config;
-
-import org.jasypt.encryption.StringEncryptor;
-import org.junit.Ignore;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-
-@SpringBootTest
-public class JasyptConfigurationTest {
-    @Autowired
-    StringEncryptor jasyptStringEncryptor;
-
+//package com.dev.springrestapi.finedust.config;
+//
+//import org.jasypt.encryption.StringEncryptor;
+//import org.junit.Ignore;
+//import org.junit.jupiter.api.DisplayName;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//
+//@SpringBootTest
+//public class JasyptConfigurationTest {
+//    @Autowired
+//    StringEncryptor jasyptStringEncryptor;
+//
 //    @Test
 //    @DisplayName("설정_파일_암호화_테스트")
 //    @Ignore
@@ -35,4 +35,4 @@ public class JasyptConfigurationTest {
 //        System.out.println("encryptedPassword : " + encryptedPassword);
 //        System.out.println("decryptedPassword : " + decryptedPassword);
 //    }
-}
+//}
