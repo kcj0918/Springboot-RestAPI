@@ -74,3 +74,6 @@ clean.doLast {
 	file(generated).deleteDir()
 }
 
+test {
+	useJUnitPlatform()
+}
