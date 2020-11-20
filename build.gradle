@@ -66,6 +66,7 @@ sourceSets {
 }
 
 tasks.withType(JavaCompile) {
+	options.incremental = false
 	options.annotationProcessorGeneratedSourcesDirectory = file(generated)
 }
 
